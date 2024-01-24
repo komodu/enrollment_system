@@ -1,16 +1,30 @@
 package main
 
 import (
-	"github.com/uadmin/uadmin"
+	// Specify the username that you used inside github.com folder
 	"github.com/komodu/enrollment_system/models"
 
+	"github.com/uadmin/uadmin"
 )
 
 func main() {
-	uadmin.Register{
+	uadmin.Register(
 		models.Student{},
-	}
-	uadmin.SiteName = "Enrollment System"
-	//uadmin.BindIP = "127.0.0.1"
+		models.Schools{},
+		models.Courses{},				
+		models.Subjects{},
+		models.YearLevel{},
+		models.CourseSHS{},
+	)
+	uadmin.RegisterInlines(models.Schools{}, map[string]string{
+		"Student":   "SchoolsID",
+		"Courses":   "SchoolsID",
+		"YearLevel": "SchoolsID",
+	})
+	uadmin.RegisterInlines(models.Subjects{}, map[string]string{
+		"Courses":   "SubjectsID",
+		"YearLevel": "SubjectsID",
+	})
+
 	uadmin.StartServer()
 }
