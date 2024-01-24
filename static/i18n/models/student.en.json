@@ -1,6 +1,13 @@
 {
   "display_name": "Student",
   "fields": {
+    "AccountNum": {
+      "display_name": "Account Num",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "AccountNumber": {
       "display_name": "Account Number",
       "help": "",
@@ -50,6 +57,13 @@
       "err_msg": {},
       "Choices": {}
     },
+    "Enrolled": {
+      "display_name": "Enrolled",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "FName": {
       "display_name": "F Name",
       "help": "",
@@ -64,9 +78,16 @@
       "err_msg": {},
       "Choices": {}
     },
+    "Form137": {
+      "display_name": "Form 137",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "FullName": {
       "display_name": "Full Name",
-      "help": "",
+      "help": "Follow the format LastName, FirstName, Middle Initial",
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}
@@ -122,6 +143,13 @@
     },
     "SHSCourse": {
       "display_name": "SHS Course",
+      "help": "SHS Strand you previously enrolled?",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "SHSCourseID": {
+      "display_name": "SHS Course ID",
       "help": "",
       "pattern_msg": "",
       "err_msg": {},

@@ -11,20 +11,30 @@ func main() {
 	uadmin.Register(
 		models.Student{},
 		models.Schools{},
-		models.Courses{},				
+		models.CourseSHS{},
+		models.CollegeCourses{},
 		models.Subjects{},
 		models.YearLevel{},
-		models.CourseSHS{},
 	)
-	uadmin.RegisterInlines(models.Schools{}, map[string]string{
-		"Student":   "SchoolsID",
-		"Courses":   "SchoolsID",
-		"YearLevel": "SchoolsID",
-	})
-	uadmin.RegisterInlines(models.Subjects{}, map[string]string{
-		"Courses":   "SubjectsID",
-		"YearLevel": "SubjectsID",
-	})
+
+	uadmin.RegisterInlines(
+		models.Schools{},
+		map[string]string{
+			"Student": "SchoolsID",
+		},
+	)
+	uadmin.RegisterInlines(
+		models.YearLevel{},
+		map[string]string{
+			"Student": "YearLevelID",
+		},
+	)
+	uadmin.RegisterInlines(
+		models.CollegeCourses{},
+		map[string]string{
+			"CourseSHS": "CollegeCoursesID",
+		},
+	)
 
 	uadmin.StartServer()
 }

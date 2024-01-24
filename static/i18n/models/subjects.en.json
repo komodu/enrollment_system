@@ -1,6 +1,20 @@
 {
   "display_name": "Subjects",
   "fields": {
+    "CollegeCourses": {
+      "display_name": "College Courses",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "CollegeCoursesList": {
+      "display_name": "College Courses List",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "ID": {
       "display_name": "ID",
       "help": "",
@@ -10,6 +24,13 @@
     },
     "Name": {
       "display_name": "Name",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "SName": {
+      "display_name": "S Name",
       "help": "",
       "pattern_msg": "",
       "err_msg": {},
