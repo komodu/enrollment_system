@@ -1,7 +1,9 @@
 package models
 
 import (
+	"fmt"
 	"math/rand"
+	"strconv"
 	"time"
 
 	"github.com/uadmin/uadmin"
@@ -9,16 +11,21 @@ import (
 
 type Student struct {
 	uadmin.Model
-	AccountNum int `uadmin:"read_only"`
-	//AccountNumID uint
-	FullName  string `uadmin:"help:Follow the format LastName, FirstName, Middle Initial"`
-	Age       int    `uadmin:"pattern:^[0-9]*$;required"`
-	Address   string `uadmin:"list_exclude;required"`
-	Email     string `uadmin:"email;required"`
-	PSA       string `uadmin:"file;list_exclude"`
-	GoodMoral string `uadmin:"file;list_exclude"`
-	Form137   string `uadmin:"file;list_exclude"`
-	Guardian  string
+	AccountNumber string `uadmin:"read_only"`
+	// AccountNumberID uint
+
+	FullName      string `uadmin:"read_only"`
+	FirstName     string `uadmin:"list_exclude;required"`
+	MiddleInitial string `uadmin:"list_exclude;required"`
+	LastName      string `uadmin:"list_exclude;required"`
+	Age           int    `uadmin:"pattern:^[0-9]*$;required"`
+	Gender        Gender `uadmin:"required"`
+	Address       string `uadmin:"list_exclude;required"`
+	Email         string `uadmin:"email;required"`
+	PSA           string `uadmin:"file;list_exclude"`
+	GoodMoral     string `uadmin:"file;list_exclude"`
+	Form137       string `uadmin:"file;list_exclude"`
+	Guardian      string
 	// //AvailableCollegeCourses
 
 	Schools   Schools `uadmin:"help:Where will you enroll?"`
@@ -38,33 +45,21 @@ type Student struct {
 	Enrolled     bool      // `uadmin:"approval"`
 }
 
-func (s *Student) Compute() int {
-	if s.Enrolled {
-		s.AccountNum = rand.Intn(999999)
-	}
-	return s.AccountNum
-}
-
-// AccountNumber --> 8digit YYMMmmss --> 24010623
-// func generateAcctNo(x *Student) string {
-// 	min := 100000
-// 	max := 999999
-// 	x.AccountNumber = "24" + strconv.Itoa(rand.Intn(max-min)+min)
-// 	return x.AccountNumber
-// }
-
 func (s *Student) String() string {
 	return s.FullName
 }
 
-// func (x *Student) Save() string {
-// 	min := 100000
-// 	max := 999999
-// 	x.AccountNumber = "24" + strconv.Itoa(rand.Intn(max-min)+min)
-// 	return x.AccountNumber
-// }
+// Gender Field !
+type Gender int
 
-// Validate function !
+func (Gender) Male() Gender {
+	return 1
+}
+
+func (Gender) Female() Gender {
+	return 2
+}
+
 func (t Student) Validate() (errMsg map[string]string) {
 	// Initialize the error messages
 	errMsg = map[string]string{}
@@ -72,22 +67,29 @@ func (t Student) Validate() (errMsg map[string]string) {
 	// this record and make sure the record is not the record we are
 	// editing right now
 	student := Student{}
-	if uadmin.Count(&student, "full_name = ? AND account_number <> ?", t.FullName, t.AccountNum) != 0 {
-		errMsg["full_name"] = "The Student Name is already in the system"
+	if uadmin.Count(&student, "account_number <> ?", t.AccountNumber) == 0 {
+		errMsg["account_number"] = "The Student is already in the system"
+		uadmin.Trail(uadmin.DEBUG, errMsg)
+		// uadmin.ALERT("")
+	} else {
+		uadmin.Trail(uadmin.DEBUG, "The Student is not in the system.")
 	}
 	return
 }
 
-// func (x *Student) Compute() string {
-// 	// a := time.Now().Year()
-// 	// b := time.Now().Minute()
-// 	c := time.Now().UnixMilli()
-// 	result := strconv.Itoa(c)
-// 	result = x.AccountNum
-// 	return result
-// }
+func (s *Student) Save() {
+	student := Student{}
+	uadmin.Trail(uadmin.DEBUG, s.AccountNumber)
 
-// func (completename *Student) Save() string {
-// 	completename.FullName = completename.FirstName + " " + completename.LastName
-// 	return completename.FullName
-// }
+	if s.Enrolled {
+		if uadmin.Count(&student, "account_number <> ?", s.AccountNumber) != 0 {
+			s.AccountNumber = "24" + strconv.Itoa(rand.Intn(99)) + strconv.Itoa(rand.Intn(99)) + strconv.Itoa(rand.Intn(99)) + strconv.Itoa(rand.Intn(99))
+			fmt.Println(s.AccountNumber)
+		}
+		//student := Student{}
+		uadmin.Save(s)
+	} else {
+		s.AccountNumber = ""
+		uadmin.Save(s)
+	}
+}

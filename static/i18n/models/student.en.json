@@ -87,7 +87,14 @@
     },
     "FullName": {
       "display_name": "Full Name",
-      "help": "Follow the format LastName, FirstName, Middle Initial",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Gender": {
+      "display_name": "Gender",
+      "help": "",
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}
@@ -122,6 +129,13 @@
     },
     "LastName": {
       "display_name": "Last Name",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "MiddleInitial": {
+      "display_name": "Middle Initial",
       "help": "",
       "pattern_msg": "",
       "err_msg": {},
