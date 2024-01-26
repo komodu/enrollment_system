@@ -22,8 +22,22 @@
       "err_msg": {},
       "Choices": {}
     },
+    "SubjectID": {
+      "display_name": "Subject ID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "SubjectsID": {
       "display_name": "Subjects ID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Year": {
+      "display_name": "Year",
       "help": "",
       "pattern_msg": "",
       "err_msg": {},

@@ -29,9 +29,37 @@
       "err_msg": {},
       "Choices": {}
     },
+    "AutoGenerateAccNum": {
+      "display_name": "Auto Generate Acc Num",
+      "help": "This is Automatically turned On.",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "CollegeCourses": {
+      "display_name": "College Courses",
+      "help": "What course will you enroll?",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "CollegeCoursesID": {
+      "display_name": "College Courses ID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "Course": {
       "display_name": "Course",
       "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "CourseSHS": {
+      "display_name": "Course SHS",
+      "help": "SHS Strand you previously enrolled?",
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}

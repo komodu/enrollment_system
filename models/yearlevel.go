@@ -5,7 +5,11 @@ import "github.com/uadmin/uadmin"
 // ==================================================+YEAR LEVEL ============================================
 type YearLevel struct {
 	uadmin.Model
-	Name string
+	Year string `uadmin:"required"`
 
-	// SubjectsID uint
+	SubjectsID uint `uadmin:"read_only"`
+}
+
+func (s *YearLevel) String() string {
+	return s.Year
 }

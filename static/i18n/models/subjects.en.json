@@ -42,6 +42,13 @@
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}
+    },
+    "YearLevelList": {
+      "display_name": "Year Level List",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
     }
   }
 }

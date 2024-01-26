@@ -24,6 +24,19 @@ func main() {
 		},
 	)
 	uadmin.RegisterInlines(
+		models.CourseSHS{},
+		map[string]string{
+			"CollegeCourses": "CourseSHSID",
+			"Student":        "CourseSHSID",
+		},
+	)
+	uadmin.RegisterInlines(
+		models.Subjects{},
+		map[string]string{
+			"YearLevel": "SubjectsID",
+		},
+	)
+	uadmin.RegisterInlines(
 		models.YearLevel{},
 		map[string]string{
 			"Student": "YearLevelID",
@@ -32,7 +45,8 @@ func main() {
 	uadmin.RegisterInlines(
 		models.CollegeCourses{},
 		map[string]string{
-			"CourseSHS": "CollegeCoursesID",
+			"Subjects": "CollegeCoursesID",
+			"Student":  "CollegeCoursesID",
 		},
 	)
 

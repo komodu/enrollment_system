@@ -36,6 +36,27 @@
       "err_msg": {},
       "Choices": {}
     },
+    "Subject": {
+      "display_name": "Subject",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "SubjectID": {
+      "display_name": "Subject ID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Subjects": {
+      "display_name": "Subjects",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "YearLevel": {
       "display_name": "Year Level",
       "help": "",
