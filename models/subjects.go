@@ -11,12 +11,12 @@ type Subjects struct {
 	Name string `uadmin:"required"`
 	//YearLevel YearLevel
 	CollegeCourses     []CollegeCourses `uadmin:"list_exclude" gorm:"many2many:-"`
-	CollegeCoursesList string           `uadmin:"read_only"`
+	CollegeCoursesList string           `uadmin:"list_exclude;read_only"`
 	CollegeCoursesID   uint
 	YearLevel          YearLevel `uadmin:"list_exclude" gorm:"many2many:-"`
 	//YearLevelID        uint
 	//	YearLevelList string `uadmin:"read_only"`
-	StudentID uint `uadmin:"list_exclude"`
+	StudentID uint //`uadmin:"help:Students taking the subject;list_exclude"`
 }
 
 func (s *Subjects) String() string {

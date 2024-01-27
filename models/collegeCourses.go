@@ -13,7 +13,7 @@ type CollegeCourses struct {
 	//SchoolsID uint
 	CourseSHS CourseSHS `uadmin:"list_exclude" gorm:"many2many:-"`
 	// CourseSHSList string      `uadmin:"read_only"`
-	CourseSHSID uint
+	//CourseSHSID uint
 	// YearLevel     YearLevel
 	// YearLevelID   uint
 	//Subjects   Subjects `uadmin:"list_exclude"`

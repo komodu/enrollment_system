@@ -20,6 +20,7 @@ func main() {
 		models.Student{},
 		map[string]string{
 			"Subjects": "StudentID",
+			"Schools":  "StudentID",
 		},
 	)
 	uadmin.RegisterInlines(
@@ -51,7 +52,8 @@ func main() {
 		models.CollegeCourses{},
 		map[string]string{
 			//		"Subjects": "CollegeCoursesID",
-			"Student": "CollegeCoursesID",
+			"Student":  "CollegeCoursesID",
+			"Subjects": "CollegeCoursesID",
 		},
 	)
 
