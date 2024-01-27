@@ -11,42 +11,47 @@ func main() {
 	uadmin.Register(
 		models.Student{},
 		models.Schools{},
-		models.CourseSHS{},
+		//models.CourseSHS{},
 		models.CollegeCourses{},
 		models.Subjects{},
-		models.YearLevel{},
+		//models.YearLevel{},
 	)
-
+	uadmin.RegisterInlines(
+		models.Student{},
+		map[string]string{
+			"Subjects": "StudentID",
+		},
+	)
 	uadmin.RegisterInlines(
 		models.Schools{},
 		map[string]string{
 			"Student": "SchoolsID",
 		},
 	)
-	uadmin.RegisterInlines(
-		models.CourseSHS{},
-		map[string]string{
-			"CollegeCourses": "CourseSHSID",
-			"Student":        "CourseSHSID",
-		},
-	)
-	uadmin.RegisterInlines(
-		models.Subjects{},
-		map[string]string{
-			"YearLevel": "SubjectsID",
-		},
-	)
-	uadmin.RegisterInlines(
-		models.YearLevel{},
-		map[string]string{
-			"Student": "YearLevelID",
-		},
-	)
+	// uadmin.RegisterInlines(
+	// 	models.CourseSHS{},
+	// 	map[string]string{
+	// 		"CollegeCourses": "CourseSHSID",
+	// 	},
+	// )
+	// uadmin.RegisterInlines(
+	// 	models.Subjects{},
+	// 	map[string]string{
+	// 		"YearLevel": "SubjectsID",
+	// 	},
+	// )
+	// uadmin.RegisterInlines(
+	// 	models.YearLevel{},
+	// 	map[string]string{
+	// 		"Student":  "YearLevelID",
+	// 		"Subjects": "YearLevelID",
+	// 	},
+	// )
 	uadmin.RegisterInlines(
 		models.CollegeCourses{},
 		map[string]string{
-			"Subjects": "CollegeCoursesID",
-			"Student":  "CollegeCoursesID",
+			//		"Subjects": "CollegeCoursesID",
+			"Student": "CollegeCoursesID",
 		},
 	)
 

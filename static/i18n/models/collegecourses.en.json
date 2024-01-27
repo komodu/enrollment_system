@@ -36,6 +36,13 @@
       "err_msg": {},
       "Choices": {}
     },
+    "StudentID": {
+      "display_name": "Student ID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "Subject": {
       "display_name": "Subject",
       "help": "",

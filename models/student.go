@@ -43,18 +43,11 @@ type Student struct {
 	YearLevel   YearLevel `uadmin:"help:What year level?"`
 	YearLevelID uint
 
-	DateEnrolled time.Time //`uadmin:"read_only"`
-	Enrolled     bool
+	DateEnrolled time.Time
+	Enrolled     bool `uadmin:"help:"`
 }
 
 func (s *Student) String() string {
-	// s.AutoGenerateAccNum = true
-	// if s.AutoGenerateAccNum {
-	// 	ind := "2400"
-	// 	y := s.ID
-	// 	x := 1000 + int(y)
-	// 	s.AccountNumber = ind + strconv.Itoa(x)
-	// }
 	return s.FullName
 }
 
@@ -63,7 +56,7 @@ func (r *Student) Generate() string {
 	if r.AutoGenerateAccNum {
 		ind1 := r.DateEnrolled.Year()
 		ind2 := strconv.Itoa(rand.Intn(9)) + strconv.Itoa(rand.Intn(9)) + strconv.Itoa(rand.Intn(9)) + strconv.Itoa(rand.Intn(9)) + strconv.Itoa(rand.Intn(9))
-		//	ind3 := 100 + int(r.ID)
+
 		r.AccountNumber = strconv.Itoa(ind1) + ind2
 		return r.AccountNumber
 	}
@@ -72,12 +65,19 @@ func (r *Student) Generate() string {
 	return r.AccountNumber
 }
 
-// func (t *Student) Validate() (errMsg map[string]string) {
-// 	// Initialize the error messages
-// 	errMsg = map[string]string{}
-// 	uadmin.Save(t)
-// 	return
-// }
+// Validate function !
+func (t Student) Validate() (errMsg map[string]string) {
+	// Initialize the error messages
+	errMsg = map[string]string{}
+	// Get any records from the database that maches the name of
+	// this record and make sure the record is not the record we are
+	// editing right now
+	// stud := Student{}
+	// if uadmin.Count(&stud, "name = ? AND id <> ?", t.CourseSHS, t.CollegeCourses.CourseSHS) != 0 {
+	// 	errMsg["Name"] = "This todo name is already in the system"
+	// }
+	return
+}
 
 // Gender Field !
 type Gender int
@@ -98,7 +98,6 @@ func (s *Student) Save() {
 		s.FullName = s.LastName + " " + s.FirstName + " "
 		//errMsg["account_number"] = "The Student is already in the system"
 		//t.AccountNumber = ind + strconv.Itoa(x) + strconv.Itoa(y)
-
 		for {
 			s.AccountNumber = s.Generate()
 			if uadmin.Count(&s, "account_number = ?", s.AccountNumber) == 0 {
@@ -111,7 +110,7 @@ func (s *Student) Save() {
 				//uadmin.Save(s)
 
 				uadmin.Trail(uadmin.DEBUG, "The Account number has duplicate. Number not added. Regenerating new number ")
-				s.AccountNumber = s.Generate()
+				//s.AccountNumber = s.Generate()
 				uadmin.Trail(uadmin.DEBUG, s.AccountNumber)
 			}
 		}
@@ -120,18 +119,3 @@ func (s *Student) Save() {
 		uadmin.Save(s)
 	}
 }
-
-//uadmin.Save(s)
-// if s.Enrolled {
-// 	if uadmin.Count(&s, "account_number <> ?", s.AccountNumber) == 0 {
-// 		//fmt.Println(s.AccountNumber)
-// 		uadmin.Trail(uadmin.DEBUG, s.AccountNumber)
-// 		uadmin.Trail(uadmin.DEBUG, "No Duplicated Acc number found. Student successfully added.")
-// 		uadmin.Save(s)
-// 	}
-// 	//student := Student{}
-// } else {
-// 	s.AccountNumber = ""
-// 	uadmin.Trail(uadmin.DEBUG, "Duplicate found. Adding")
-// 	uadmin.Save(s)
-// }

@@ -36,6 +36,20 @@
       "err_msg": {},
       "Choices": {}
     },
+    "StudentID": {
+      "display_name": "Student ID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "SubjectsID": {
+      "display_name": "Subjects ID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "YearLevel": {
       "display_name": "Year Level",
       "help": "",

@@ -1,15 +1,22 @@
 package models
 
-import "github.com/uadmin/uadmin"
-
 // ==================================================+YEAR LEVEL ============================================
-type YearLevel struct {
-	uadmin.Model
-	Year string `uadmin:"required"`
+type YearLevel int
 
-	SubjectsID uint `uadmin:"read_only"`
+func (YearLevel) FirstYear() YearLevel {
+	return 1
 }
 
-func (s *YearLevel) String() string {
-	return s.Year
+func (YearLevel) SecondYear() YearLevel {
+	return 2
+}
+
+func (YearLevel) ThirdYear() YearLevel {
+	return 3
+}
+func (YearLevel) FourthYear() YearLevel {
+	return 4
+}
+func (YearLevel) FifthYear() YearLevel {
+	return 5
 }
