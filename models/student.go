@@ -38,7 +38,7 @@ type Student struct {
 	CollegeCourses   CollegeCourses `uadmin:"help:What course will you enroll?"`
 	CollegeCoursesID uint
 
-	//CollegeCoursesID uint `uadmin:"list_exclude"`
+	// //CollegeCoursesID uint `uadmin:"list_exclude"`
 
 	YearLevel   YearLevel `uadmin:"help:What year level?"`
 	YearLevelID uint

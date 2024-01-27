@@ -24,7 +24,7 @@
     },
     "Name": {
       "display_name": "Name",
-      "help": "SHS strand you took?",
+      "help": "",
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}
