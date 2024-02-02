@@ -21,6 +21,7 @@ type Student struct {
 	LastName  string `uadmin:"list_exclude"`
 	Age       int    `uadmin:"pattern:^[0-9]*$;list_exclude"`
 	Gender    Gender //`uadmin:"list_exclude"`
+	GenderID  uint
 	Address   string `uadmin:"list_exclude"`
 	Email     string `uadmin:"email;list_exclude"`
 	PSA       string `uadmin:"file;list_exclude"`
@@ -69,53 +70,38 @@ func (r *Student) Generate() string {
 func (t Student) Validate() (errMsg map[string]string) {
 	// Initialize the error messages
 	errMsg = map[string]string{}
-	// Get any records from the database that maches the name of
-	// this record and make sure the record is not the record we are
-	// editing right now
-	// stud := Student{}
-	// if uadmin.Count(&stud, "name = ? AND id <> ?", t.CourseSHS, t.CollegeCourses.CourseSHS) != 0 {
-	// 	errMsg["Name"] = "This todo name is already in the system"
-	// }
+
 	return
-}
-
-// Gender Field !
-type Gender int
-
-func (Gender) Male() Gender {
-	return 1
-}
-
-func (Gender) Female() Gender {
-	return 2
 }
 
 func (s *Student) Save() {
 	//s.AutoGenerateAccNum = true
+	if s.Enrolled {
+		if s.AccountNumber == "" {
+			uadmin.Trail(uadmin.DEBUG, s.AccountNumber)
+			s.FullName = s.LastName + " " + s.FirstName + " "
+			//errMsg["account_number"] = "The Student is already in the system"
+			//t.AccountNumber = ind + strconv.Itoa(x) + strconv.Itoa(y)
+			for {
+				s.AccountNumber = s.Generate()
+				if uadmin.Count(&s, "account_number = ?", s.AccountNumber) == 0 {
+					uadmin.Save(s)
+					uadmin.Trail(uadmin.DEBUG, "The Account number is not in the server. Number added.")
+					uadmin.Trail(uadmin.DEBUG, s.AccountNumber)
+					break
+					// uadmin.ALERT("")
+				} else {
+					//uadmin.Save(s)
 
-	if s.AccountNumber == "" {
-		uadmin.Trail(uadmin.DEBUG, s.AccountNumber)
-		s.FullName = s.LastName + " " + s.FirstName + " "
-		//errMsg["account_number"] = "The Student is already in the system"
-		//t.AccountNumber = ind + strconv.Itoa(x) + strconv.Itoa(y)
-		for {
-			s.AccountNumber = s.Generate()
-			if uadmin.Count(&s, "account_number = ?", s.AccountNumber) == 0 {
-				uadmin.Save(s)
-				uadmin.Trail(uadmin.DEBUG, "The Account number is not in the server. Number added.")
-				uadmin.Trail(uadmin.DEBUG, s.AccountNumber)
-				break
-				// uadmin.ALERT("")
-			} else {
-				//uadmin.Save(s)
-
-				uadmin.Trail(uadmin.DEBUG, "The Account number has duplicate. Number not added. Regenerating new number ")
-				//s.AccountNumber = s.Generate()
-				uadmin.Trail(uadmin.DEBUG, s.AccountNumber)
+					uadmin.Trail(uadmin.DEBUG, "The Account number has duplicate. Number not added. Regenerating new number ")
+					//s.AccountNumber = s.Generate()
+					uadmin.Trail(uadmin.DEBUG, s.AccountNumber)
+				}
 			}
+			// uadmin.ALERT("")
 		}
-		// uadmin.ALERT("")
 	} else {
 		uadmin.Save(s)
 	}
+
 }
