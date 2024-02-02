@@ -1,6 +1,13 @@
 {
   "display_name": "Course SHS",
   "fields": {
+    "CollegeCourseList": {
+      "display_name": "College Course List",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "CollegeCourses": {
       "display_name": "College Courses",
       "help": "",

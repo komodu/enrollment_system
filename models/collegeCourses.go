@@ -11,9 +11,9 @@ type CollegeCourses struct {
 	// YearLevel   YearLevel
 	// YearLevelID uint
 	//SchoolsID uint
-	CourseSHS CourseSHS `uadmin:"list_include"`
+	// CourseSHS CourseSHS `uadmin:"list_include"`
 	//CourseSHSList string      `uadmin:"read_only"`
-	CourseSHSID uint
+	// CourseSHSID uint
 	// YearLevel     YearLevel
 	// YearLevelID   uint
 	//Subjects   Subjects `uadmin:"list_exclude"`

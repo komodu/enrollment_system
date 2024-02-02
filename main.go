@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	DBConfig()
+	// DBConfig()
 	uadmin.Register(
 		models.Student{},
 		models.Schools{},
@@ -21,8 +21,12 @@ func main() {
 		models.Subjects{},
 		models.YearLevel{},
 	)
+	uadmin.RegisterInlines(models.CollegeCourses{}, map[string]string{
+		"CourseSHS": "CollegeCourses",
+	})
+	uadmin.RootURL = "/admin/"
 
-	http.HandleFunc("/enrollment_system/", uadmin.Handler(views.StudentForm))
+	http.HandleFunc("/", uadmin.Handler(views.MainHandler))
 	Server()
 }
 
@@ -38,7 +42,7 @@ func DBConfig() {
 }
 
 func Server() {
-	uadmin.RootURL = "/admin/"
+	// uadmin.RootURL = "/admin/"
 	uadmin.Port = 1234
 	uadmin.StartServer()
 }
