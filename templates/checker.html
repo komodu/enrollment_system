@@ -1,0 +1,40 @@
+
+  {{define "title"}}
+  <title>{{.Title}}</title>
+{{end}}
+
+{{define "content"}}
+<div class="container-fluid mx-3 my-3 py-4">
+  <div class="mx-auto w-50 bg-light">
+      <h1><strong>Student Checker</strong></h1>
+      <input class="form-control" type="text" name="firstname" placeholder="Enter Name or Account Number"><br>
+      <select name="studentname" id="student" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option value="" disabled selected hidden>Select Student</option>
+        {{range .Students}}
+        <option>{{.FullName}} - {{.AccountNumber}}</option>
+        {{end}}
+        </select>
+        
+        <div class="container">
+          <div class="text-center">STATUS: </div>
+          <div class="row">
+            <div class="col">
+
+              <p>Name: {{.Name}}</p>
+              <p>Senior Highschool Strand: {{.CourseSHS}}</p>
+              <p>Course: {{.CollegeCourses}}</p>
+          
+            </div>
+
+            <div class="col">
+              <p>School:{{.Schools}}</p>
+              <p>Year Level: {{.YearLevel}}</p>
+              <p>Gender: {{.Gender}}</p>
+
+            </div>
+        </div>
+        </div>
+
+  </div>
+</div>
+{{end}}

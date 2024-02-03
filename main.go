@@ -24,9 +24,9 @@ func main() {
 	uadmin.RegisterInlines(models.CollegeCourses{}, map[string]string{
 		"CourseSHS": "CollegeCourses",
 	})
-	uadmin.RootURL = "/admin/"
+	uadmin.RootURL = "/admin/" // Set URL root (Models and chuchu)
 
-	http.HandleFunc("/", uadmin.Handler(views.MainHandler))
+	http.HandleFunc("/system/", uadmin.Handler(views.MainHandler)) // Set the page you want to show first
 	Server()
 }
 

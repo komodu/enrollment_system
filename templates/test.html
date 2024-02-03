@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test 1 Page</title>
+  {{ define "title" }}
+  <title>Document</title>
+  {{end}}
 </head>
 <body>
-  <h1>Hello, World</h1>
+  {{ define "content" }}
+  <h1>Hello world, test</h1>
+  <!-- //<h1>TEST</h1> -->
+  {{ end }}
 </body>
 </html>

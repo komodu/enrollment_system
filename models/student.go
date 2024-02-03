@@ -15,7 +15,7 @@ type Student struct {
 	// AccountNumberID uint
 	AutoGenerateAccNum bool `uadmin:"read_only;help:This is Automatically turned On.;list_exclude"`
 
-	FullName  string `uadmin:"read_only;list_exclude"`
+	FullName  string `uadmin:"read_only"`
 	FirstName string `uadmin:"list_exclude"`
 	//MiddleInitial string `uadmin:"list_exclude"`
 	LastName  string `uadmin:"list_exclude"`

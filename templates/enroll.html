@@ -1,0 +1,80 @@
+{{ define "title" }}
+<title>{{.Title}}</title>
+{{ end }}
+
+
+  {{ define "content" }}
+  <div class="container-fluid mx-3 my-3 py-4">
+    <div class="mx-auto w-50 bg-light">
+      <div>
+        <h1 class="text-center"><strong>Enrollment System</strong></h1>
+      </div>
+
+      <div class="px-3">
+        <form method="POST">
+          <!-- The assigned name attribute is equivalent to r.PostFormValue in
+            Golang (e.g. r.PostFormValue("username") = "admin") -->
+          <label for="school">School:</label>
+
+          <select name="school" id="school" class="form-select form-select-lg mb-3"
+            aria-label=".form-select-lg example">
+            <option value="" disabled selected hidden>Select School</option>
+            {{range .Schools}}
+            <option>{{.Name}}</option>
+            {{end}}
+          </select><br>
+          <!-- <input class="form-control" type="text" placeholder="Default input" aria-label="default input example"> -->
+          <label for="firstname">First Name:</label><br>
+          <input class="form-control my-2" type="text" name="firstname"><br>
+
+          <label for="lastname">Last Name:</label><br>
+          <input class="form-control my-2" type="text" name="lastname"><br>
+
+          <label for="age">Age</label><br>
+          <input class="form-control my-2" type="number" name="age"><br>
+
+          <!-- <label for="lastname"></label>Last Name:<br>
+            <input type="text" name="username"><br> -->
+
+          <label for="gender">Gender</label><br>
+          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="gender"
+            id="gender">
+            <option value="" disabled selected hidden>Select Gender</option>
+            {{range .Gender}}
+            <option>{{.Name}}</option>
+            {{end}}
+          </select><br>
+
+          <label for="address"></label>Address:<br>
+          <input class="form-control my-2" type="text" name="address"><br>
+
+          <label for="email"></label>Email:<br>
+          <input class="form-control my-2" type="email" name="email"><br>
+
+          <label for="psa"></label>PSA:<br>
+          <input class="form-control my-2" type="file" name="psa"><br>
+
+          <label for="goodmoral"></label>Good Moral:<br>
+          <input class="form-control my-2" type="file" name="goodmoral"><br>
+
+          <label for="form137"></label>Form 137:<br>
+          <input class="form-control my-2" type="file" name="form137"><br>
+
+          <label for="guardianname"></label>Guardian Name:<br>
+          <input class="form-control my-2" type="text" name="guardianname"><br>
+
+          <label for="courseSHS"></label>Senior Highschool Strand:<br>
+          <select class="form-control my-2" name="courseSHS" id="courseSHS">
+            <option value="" disabled selected hidden>Select School</option>
+            {{range .SHS}}
+            <option>{{.Name}}</option>
+            {{end}}
+          </select><br>
+          <!-- //<label for=""></label>Last Name:<br> -->
+          <button type="button" class="btn btn-outline-primary">Submit</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  {{ end }}
