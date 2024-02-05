@@ -31,3 +31,6 @@ func (i *CourseSHS) Save() {
 	// Save it to the database
 	uadmin.Save(i)
 }
+func (s *CourseSHS) String() string {
+	return s.Name
+}

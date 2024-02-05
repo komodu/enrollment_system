@@ -15,6 +15,13 @@
       "err_msg": {},
       "Choices": {}
     },
+    "CourseSHSID": {
+      "display_name": "Course SHSID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "CourseSHSList": {
       "display_name": "Course SHS List",
       "help": "",

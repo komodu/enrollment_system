@@ -19,7 +19,7 @@ func StudentForm(w http.ResponseWriter, r *http.Request) map[string]interface{} 
 	school := []models.Schools{}
 	gender := []models.Gender{}
 	shsStrand := []models.CourseSHS{}
-
+	// collegecourses := []models.CollegeCourses{}
 	uadmin.All(&students)
 	for x := range students {
 		uadmin.Preload(&students[x])
@@ -49,6 +49,16 @@ func StudentForm(w http.ResponseWriter, r *http.Request) map[string]interface{} 
 	}
 	//uadmin.Trail(uadmin.DEBUG, "Test school:")
 	c["SHS"] = shsStrand
+
+	// MAPPING FOR COURSES TAKEN FROM SHS STRAND
+	uadmin.All(&shsStrand)
+
+	for x := range shsStrand {
+		uadmin.Preload(&shsStrand[x])
+	}
+	//uadmin.Trail(uadmin.DEBUG, "Test school:")
+	c["CollegeCourses"] = shsStrand
+
 	r.URL.Path = strings.TrimPrefix(r.URL.Path, "/enroll")
 	r.URL.Path = strings.TrimPrefix(r.URL.Path, "/checker")
 	return c

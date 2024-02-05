@@ -23,7 +23,7 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 	case "test": //Name of HTML
 		c = TestPage(w, r)
 	case "checker": //Name of HTML
-		c = StudentInfo(w, r)
+		c = StudentHandler(w, r)
 	default:
 		page = "home"
 	}

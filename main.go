@@ -21,8 +21,8 @@ func main() {
 		models.Subjects{},
 		models.YearLevel{},
 	)
-	uadmin.RegisterInlines(models.CollegeCourses{}, map[string]string{
-		"CourseSHS": "CollegeCourses",
+	uadmin.RegisterInlines(models.CourseSHS{}, map[string]string{
+		"CollegeCourses": "CourseSHSID",
 	})
 	uadmin.RootURL = "/admin/" // Set URL root (Models and chuchu)
 

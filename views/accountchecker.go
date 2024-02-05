@@ -10,23 +10,24 @@ import (
 )
 
 // StudentForm !
-func StudentInfo(w http.ResponseWriter, r *http.Request) map[string]interface{} {
+func StudentHandler(w http.ResponseWriter, r *http.Request) map[string]interface{} {
 	c := map[string]interface{}{}
 	//uadmin.Trail(uadmin.DEBUG, "enrollment_system")
-
 	students := []models.Student{}
 	uadmin.All(&students)
 	for i := range students {
 		uadmin.Preload(&students[i])
-		c.studentsList = append(c.studentsList, map[string]interface{}{
-			"ID":             students[i].ID,
-			"Name":           students[i].FullName,
-			"CourseSHS":      students[i].CourseSHS,
-			"CollegeCourses": students[i].CollegeCourses,
-			"Schools":        students[i].Schools,
-			"YearLevel":      students[i].YearLevel,
-			"Gender":         students[i].Gender,
-		})
+		// c = append(c, map[string]interface{}{
+		// 	"ID":             students[i].ID,
+		// 	"Name":           students[i].FullName,
+		// 	"CourseSHS":      students[i].CourseSHS,
+		// 	"CollegeCourses": students[i].CollegeCourses,
+		// 	"Schools":        students[i].Schools,
+		// 	"YearLevel":      students[i].YearLevel,
+		// 	"Gender":         students[i].Gender,
+		// })
 	}
+	c["Students"] = students
+
 	return c
 }

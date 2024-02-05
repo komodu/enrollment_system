@@ -65,9 +65,17 @@
 
           <label for="courseSHS"></label>Senior Highschool Strand:<br>
           <select class="form-control my-2" name="courseSHS" id="courseSHS">
-            <option value="" disabled selected hidden>Select School</option>
+            <option value="" disabled selected hidden>Select Strand</option>
             {{range .SHS}}
             <option>{{.Name}}</option>
+            {{end}}
+          </select>
+
+          <label for="collegecourses"></label>College Course:<br>
+          <select class="form-control my-2" name="collegecourses" id="collegecourses">
+            <option value="" disabled selected hidden>Select Course</option>
+            {{range .SHS}}
+            <option>{{.CollegeCourses}}</option>
             {{end}}
           </select><br>
           <!-- //<label for=""></label>Last Name:<br> -->

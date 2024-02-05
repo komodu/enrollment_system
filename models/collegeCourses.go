@@ -13,12 +13,13 @@ type CollegeCourses struct {
 	//SchoolsID uint
 	// CourseSHS CourseSHS `uadmin:"list_include"`
 	//CourseSHSList string      `uadmin:"read_only"`
-	// CourseSHSID uint
+	CourseSHSID uint `uadmin:"list_exclude"`
 	// YearLevel     YearLevel
 	// YearLevelID   uint
 	//Subjects   Subjects `uadmin:"list_exclude"`
 	//SubjectsID uint
 	//StudentID  uint
+
 }
 
 func (s *CollegeCourses) String() string {

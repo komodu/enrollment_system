@@ -11,7 +11,7 @@
       <select name="studentname" id="student" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
         <option value="" disabled selected hidden>Select Student</option>
         {{range .Students}}
-        <option>{{.FullName}} - {{.AccountNumber}}</option>
+        <option> {{ .FullName }}</option>
         {{end}}
         </select>
         
@@ -19,18 +19,20 @@
           <div class="text-center">STATUS: </div>
           <div class="row">
             <div class="col">
-
-              <p>Name: {{.Name}}</p>
-              <p>Senior Highschool Strand: {{.CourseSHS}}</p>
-              <p>Course: {{.CollegeCourses}}</p>
-          
+           
+              <p>Name: </p>
+              <p>Senior Highschool Strand: </p>
+              <p>Course: </p>
+              
             </div>
 
             <div class="col">
-              <p>School:{{.Schools}}</p>
-              <p>Year Level: {{.YearLevel}}</p>
-              <p>Gender: {{.Gender}}</p>
-
+              <p>School:</p>
+              <p>Year Level: </p>
+              <p>Gender: </p>
+            <div class="col">
+                
+            </div>
             </div>
         </div>
         </div>
